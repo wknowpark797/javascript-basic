@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+
+      [ 변수 ]
+      - 특정 데이터값을 임시로 저장하는 공간
+      - 자주 사용하는 데이터값을 효율적으로 관리하기 위함
+      - 한번 찾은 데이터를 재활용하기 위함 (성능고려)
+
+      [ ES5 vs ES6 ]
+      ECMAScript 2015 버전을 기점으로 문법이 많이 변경 (ES6)
+
+      var 변수명 = 대입할 값; (ES5)
+      let 변수명 = 대입할 값; (ES6)
+      const 변수명 = 대입할 값; (ES6)
+      
+      [ let, const 차이점 ]
+      let: 재할당 가능 (추후 값의 변경이 가능)
+      const: 재할당 불가능 (한번 저장된 값의 변경이 불가능, 보통 변경되면 안되는 중요한 값을 저장)
+
+    */
+
+    let num;      // 변수 선언: 메모리 생성
+    num = 5;      // 변수에 값 할당, 대입: 해당 메모리에 값 저장
+    let num1 = 1; // 변수 초기화: 변수를 선언과 동시에 값 할당
+
+    console.log('num: ', num);
+    console.log('num1: ', num1);
+
+    num = 7;
+    console.log('num 변경: ', num);
+
+    const num2 = 0;
+    console.log('num2: ', num2);
+    num2 = 2;
+    console.log('num2 변경: ', num2);
+
+    /*
+    
+      [ 변수명 작성 시 주의점 ]
+      1. 숫자로 시작 불가
+      2. 특수문자 삽입 불가 (_, $는 사용 가능)
+      3. 대소문자 구분 (apple, APPLE)
+      4. 예약어 사용 불가 (let, const, function, for, if ...)
+      5. 한글 사용 불가
+    
+    */
+
+  </script>
+</body>
+
+</html>
