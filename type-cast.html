@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      [ 형 변환 ]
+    */
+
+    let num1 = 1;
+    let num2 = 2;
+    let num3 = '3';
+    console.log(num1 + num2 + num3);  // '33'
+    console.log(num3 + num2 + num1);  // '321'
+
+    // 변수를 따옴표 안쪽에서 사용하면 문자화 되기 때문에 문자열과 변수를 분리시킨 후 + 연산자로 결합
+    let name = 'David';
+    console.log('안녕 ' + name);
+
+    // [ 템플릿 리터럴 ]
+    let name2 = '홍길동';
+    console.log('저의 이름은 ' + name2 + ' 입니다.');
+    console.log(`저의 이름은 ${name2} 입니다.`);
+
+    // Falsy값 형 변환
+    console.log(2 + false);
+    console.log(2 + true);  // Truthy값 = 1
+    console.log(2 + null);
+
+  </script>
+</body>
+
+</html>
