@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      [ 배열 (Array) ]
+      규칙성이 있는 여러개의 자료들을 그룹화할 때
+    */
+
+    let colors = ['red', 'green', 'blue'];
+    console.log('colors: ', colors);
+
+    // 배열의 갯수 반환
+    console.log('colors length: ', colors.length);
+
+    // 배열의 값을 반복하는 배열전용 내장 메서드
+    colors.forEach((data) => {
+      console.log(data);
+    })
+
+    // 배열의 값 변경
+    colors[0] = 'hotpink';
+    console.log('colors[0] change: ', colors);
+
+    // 배열 맨뒤 값 추가 (push)
+    colors.push('aqua');
+    console.log('colors push: ', colors);
+
+    // 배열 맨앞 값 추가 (unshift)
+    colors.unshift('orange');
+    console.log('colors unshift: ', colors);
+
+    // 배열 맨앞 값 삭제 (shift)
+    colors.shift();
+    console.log('colors shift: ', colors);
+
+    // 배열 맨뒤 값 삭제 (pop)
+    colors.pop();
+    console.log('colors pop: ', colors);
+
+  </script>
+</body>
+
+</html>
