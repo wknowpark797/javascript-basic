@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+    
+      [ IF 조건문 ]
+      특정 조건마다의 분기를 생성하여 코드 흐름에 변화를 준다.
+
+      if(조건식1) {
+        조건식1이 참이면 해당 코드블록의 구문이 실행되고 종료
+        조건식1이 거짓이면 해당 코드블록의 구문이 무시되고 다음 조건식으로 넘어감
+      } else if(조건식2) {
+        조건식2이 참이면 해당 코드블록의 구문이 실행되고 종료
+        조건식2이 거짓이면 해당 코드블록의 구문이 무시되고 다음 조건식으로 넘어감
+      } else {
+        위의 모든 조건식이 거짓이면 해당 코드블록의 구문이 실행되고 종료
+      }
+    
+    */
+
+    const weekdays = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const now = new Date();
+
+    console.log('현재 시간값 반환: ', now.getHours());
+    console.log('현재 분값 반환: ', now.getMinutes());
+    console.log('현재 초값 반환: ', now.getSeconds());
+    console.log('현재 월 반환: ', now.getMonth());  // 1월 = 0
+    console.log('현재 월 반환: ', weekdays[now.getMonth()]);
+    console.log('현재 연도 반환: ', now.getFullYear());
+
+    // [ IF문 예제 ]
+    const currentTime = now.getHours();
+
+    if (currentTime >= 0 && currentTime < 9) {
+      document.body.style.backgroundColor = 'violet';
+    } else if (currentTime >= 9 && currentTime < 15) {
+      document.body.style['background-color'] = 'skyblue';
+    } else {
+      document.body.style.backgroundColor = 'orange';
+    }
+
+  </script>
+</body>
+
+</html>
