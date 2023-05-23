@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <script>
+
+    /*
+    
+      [ Switch 조건문 ]
+      조건으로 나오는 값의 패턴이 정해져 있을 때 해당 사례(패턴)에 따라서 분기처리
+
+      switch(값) {
+        case 값: 
+          실행할 구문;
+          break;
+        case 값: 
+          실행할 구문;
+          break;
+        case 값: 
+          실행할 구문;
+          break;
+        default: 모든 케이스에서 값이 부합되지 않을 때 실행하고 종료
+      }
+    
+    */
+
+    /*
+      [ 난수 생성하기 ]
+      Math.random()
+      0 ~ 1 사이의 실수값 반환
+    */
+
+    const result = parseInt(Math.random() * 10);      // 0 ~ 9
+    const result2 = parseInt(Math.random() * 10) + 1; // 1 ~ 10 사이의 랜덤 정수값 반환
+
+    /*
+      [ Switch문 예제 ]
+      자바스크립트는 html, js 파일 이외에는 접근 권한이 없음
+      js로 style 객체를 변경할 때 css 파일을 변경하는 것이 아닌 html 요소에 인라인 형태로 스타일 값 강제 적용
+      상대경로 설정할 때 index.html 파일 기준으로 상대경로를 설정
+    */
+
+    const result3 = parseInt(Math.random() * 5);
+    const images = ['example1.jpg', 'example2.jpg', 'example3.jpg', 'example4.jpg', 'example5.jpg'];
+
+    const element = document.body.style;
+
+    switch (result3) {
+      case 0:
+        element.backgroundImage = `url(img/${images[0]})`;
+        break;
+      case 1:
+        element.backgroundImage = `url(img/${images[1]})`;
+        break;
+      case 2:
+        element.backgroundImage = `url(img/${images[2]})`;
+        break;
+      case 3:
+        element.backgroundImage = `url(img/${images[3]})`;
+        break;
+      case 4:
+        element.backgroundImage = `url(img/${images[4]})`;
+        break;
+      default:
+        element.backgroundImage = `url(img/${images[0]})`;
+    }
+
+  </script>
+</body>
+
+</html>
