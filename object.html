@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+      [ 객체 (Object) ]
+      여러개의 자료값을 그룹화할 때 해당 값을 key: value 형태로 구조화한 형태
+
+      객체의 프로퍼티 key 값은 따옴표를 붙이지 않아도 스크립트 엔진에 의해 내부적으로 자동 형변환된다.
+      예약어를 같이 쓴 경우 오류가 발생하므로 따옴표로 강제로 감싸준다.
+    */
+
+    let studentA = {
+      name: 'David',
+      age: 20,
+      isFemale: false,
+      'is-Female': false  // 내부에서 - 연산자로 처리되므로 명시적으로 따옴표로 감싸준다.
+    }
+    console.log('studentA: ', studentA);
+
+    studentA.name = 'Peter';
+    console.log('프로퍼티 변경: ', studentA);
+
+    studentA.address = 'Seoul';
+    console.log('프로퍼티 추가: ', studentA);
+
+    // 특정 객체의 프로퍼티 key 값에 해당하는 value 값 가져오는 2가지 방법
+    console.log(studentA.name);
+    console.log(studentA['name']);
+    console.log(studentA['is-Female']);
+
+    delete studentA.age;
+    console.log('프로퍼티 삭제: ', studentA);
+
+    delete studentA['is-Female'];
+    console.log('is-Female 삭제: ', studentA);
+
+  </script>
+</body>
+
+</html>
