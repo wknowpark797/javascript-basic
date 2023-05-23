@@ -86,6 +86,31 @@
     console.log('newArray: ', newArray);
     console.log('oldArray: ', oldArray);
 
+
+    /*
+      [ 자료형 검사하기 ]
+      - 실제 null의 자료형은 null이지만 object로 찍히는 이유는 자바스크립트의 버그
+    */
+
+    const name = 'David';
+    const age = 20;
+    const isMale = true;
+    const errors = undefined;
+    const colors2 = ['red', 'green', 'blue'];
+    const obj = {
+      name: 'Emily',
+      age: 20
+    }
+    const empty2 = null;
+
+    console.log(typeof name);
+    console.log(typeof age);
+    console.log(typeof isMale);
+    console.log(typeof errors);
+    console.log(typeof colors2);
+    console.log(typeof obj);
+    console.log(typeof empty2);
+
   </script>
 </body>
 
