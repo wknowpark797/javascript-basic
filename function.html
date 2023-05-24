@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /*
+    
+      [ 함수 (Function) ]
+      자주 사용하는 실행 코드들을 블록 단위로 묶어 패키징한 형태
+      자주 사용하는 코드들을 기능 단위로 묶어 재사용
+    
+      1. 함수 정의: function 키워드를 이용해서 자주쓰는 코드들을 패키징
+      2. 함수 호출: 미리 정의된 함수를 호출해야 비로소 실행됨
+
+      [ 함수의 인수(argument), 매개변수(parameter) ]
+      - 매개변수: 함수 외부에서 함수 내부로 특정 값을 전달하기 위한 통로명
+      - 인수: 매개변수로 전달되는 값 자체
+
+      [ 함수의 반환값 (return) ]
+      - 함수 내부에서 만들어진 값을 함수 외부로 내보내는 값
+      - 함수 내부의 코드 실행 도중에 강제로 코드를 종료해야 될 때 사용
+      - return을 사용하는 이유
+        - 특정 함수에서 만들어진 값을 다른 함수나 코드에서 활용하기 위함
+        - 특정 조건일 때 강제로 함수를 종료하기 위함
+
+    */
+
+    // 함수 호출
+    const returned = plus(345, 789);
+    console.log('호출 위치 확인: ', returned);  // function문으로 선언한 함수는 호출위치가 자유로움
+
+    // 함수 정의
+    function plus(a, b) {
+      const result = a + b;
+      console.log('plus return: ', result);
+      return result;
+    }
+
+    // [ Mission 1 ] 숫자가 아닌 값이 들어올 때 안내 메시지 출력하기
+    function mission1(num1, num2) {
+      if (typeof num1 !== 'number' || typeof num2 !== 'number') {
+        alert('인수로 전달된 두개의 값은 모두 숫자로 입력하세요.');
+        return;
+      }
+
+      const result = num1 + num2;
+      console.log('mission1 return: ', result);
+      return result;
+    }
+
+    mission1(123, 789);
+
+    // [ Mission 2 ] 인수로 전달되는 값이 숫자형 문자일 때 강제로 숫자로 변환 후 연산처리하여 출력하기
+    function mission2(num1, num2) {
+      const convertedNum1 = parseInt(num1);
+      const convertedNum2 = parseInt(num2);
+
+      const result = convertedNum1 + convertedNum2;
+      console.log('mission2 return: ', result);
+      return result;
+    }
+
+    mission2('123', 789);
+
+    // [ Mission 3 ] 세번째 인수로 연산타입을 전달받아 사칙연산이 가능하도록 처리 (Switch문 활용)
+    function mission3(num1, num2, calculate) {
+      switch (calculate) {
+        case '+': return num1 + num2;
+        case '-': return num1 - num2;
+        case '*': return num1 * num2;
+        case '/': return num1 / num2;
+      }
+    }
+
+    console.log('calculate +: ', mission3(5, 7, '+'));
+    console.log('calculate -: ', mission3(50, 8, '-'));
+    console.log('calculate *: ', mission3(50, 8, '*'));
+    console.log('calculate /: ', mission3(56, 8, '/'));
+
+  </script>
+</body>
+
+</html>
