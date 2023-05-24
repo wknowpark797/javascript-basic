@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <section id="wrap">
+    <article>box1</article>
+    <article>box2</article>
+    <article>box3</article>
+    <article>box4</article>
+    <article>box5</article>
+    <article>box6</article>
+    <article>box7</article>
+    <article>box8</article>
+    <article>box9</article>
+    <article>box10</article>
+  </section>
+
+  <script>
+
+    /*
+    
+      [ 반복문 ]
+      특정 코드를 반복해서 호출할 때 (배열을 반복할 때)
+
+      1. for
+      - 가장 basic한 반복문 형태
+
+      2. forEach
+      - 배열관련 내장함수
+      - 순수배열과 유사배열 모두 반복가능
+      - 반복 기능만 있음
+
+      3. map
+      - 배열관련 내장함수
+      - 순수배열만 반복가능
+      - 반복 기능 + 데이터 복사 기능
+      - 기존 배열값을 반복하면서 deep copy 복사 기능
+
+      4. for of
+      - 순수배열과 유사배열 모두 반복가능
+      - 문자값 반복 가능 (Iterable Object)
+
+      5. for in
+      - 객체의 key 값들을 반복
+    
+    */
+
+    /*
+      [ DOM 객체 제어하기 ]
+
+      querySelector
+      - 단일 대상 탐색
+      - 단일 돔 객체 반환
+      
+      querySelectorAll
+      - 복수개의 대상을 탐색
+      - 유사배열을 반환
+        유사배열: 배열의 형태를 띄지만 순수 배열이 아니기 때문에 배열 관련 메서드를 제한적으로만 사용이 가능
+    */
+
+    const frame = document.querySelector('#wrap');
+    console.log('frame: ', frame);
+
+    const boxs = frame.querySelectorAll('article');
+    console.log('boxs: ', boxs);
+
+
+    // [ for 반복문 ]
+    for (let i = 0; i < 10; i++) {
+      console.log(`for 반복문 - ${i}`);
+    }
+
+
+    // [ forEach 반복문 ]
+    const colors = ['red', 'green', 'blue'];
+
+    colors.forEach((data, index, array) => {
+      console.log('forEach 반복문 - ', data, index, array);
+    })
+
+    // 활용되지 않는 파라미터는 _를 사용할 수 있다. (컨벤션 규칙에 따라)
+    boxs.forEach((_, index) => {
+      console.log('boxs forEach 반복문 - ', index);
+    })
+
+    // 반복 기능만 수행
+    const arr1 = colors.forEach((data, index, array) => {
+      return array;
+    })
+    console.log('forEach 반복문 return - ', arr1);
+
+
+    // [ map 반복문 ]
+    colors.map((data, index, array) => {
+      console.log('map 반복문 - ', data, index, array);
+    })
+
+    // 유사배열은 반복 불가능
+    // boxs.map((data, index) => {
+    //   console.log(data);
+    // })
+
+    // deep copy 복사 기능 수행
+    const arr2 = colors.map((data, index, array) => {
+      return array;
+    })
+    console.log('map 반복문 return - ', arr2);
+
+
+    // [ for of 반복문 ]
+    // 주로 순서값이 필요없는 반복을 간결하게 처리할 때 사용
+    for (const element of colors) {
+      console.log('for of 반복문 - ', element);
+    }
+
+    for (const box of boxs) {
+      console.log('boxs for of 반복문 - ', box);
+    }
+
+    // 문자열을 반복 처리할 때 사용 (텍스트 모션 작업 시 주로 활용)
+    const txt = 'HELLO';
+    for (const letter of txt) {
+      console.log('텍스트 for of 반복문 - ', letter);
+    }
+
+
+    // [ for in 반복문 ]
+    const studentA = {
+      name: 'David',
+      age: 20,
+      isFemale: false
+    }
+
+    // 객체의 키 값을 반복
+    for (const key in studentA) {
+      console.log('for in 반복문 key - ', key);
+    }
+
+    for (const key in studentA) {
+      console.log('for in 반복문 value - ', studentA[key]);
+    }
+
+
+    /*
+      [ Mission ]
+      images 배열값을 함수의 인수로 전달해서 브라우저 새로고침할 때마다 랜덤의 배경이미지가 출력되도록 함수 제작
+      - 배열의 개수에 따라 자동으로 설정되도록 제작
+      - 반복문 활용하기
+    */
+
+    const images = ['example1.jpg', 'example2.jpg', 'example3.jpg', 'example4.jpg', 'example5.jpg'];
+    mission(images);
+
+    function mission(array) {
+      const result = parseInt(Math.random() * array.length);
+
+      array.forEach((data, index) => {
+        if (index === result) {
+          document.body.style.backgroundImage = `url(img/${data})`;
+        }
+      })
+
+      // 축약형
+      // array.forEach((data, index) => (index === result) && (document.body.style.backgroundImage = `url(img/${data})`));
+    }
+
+  </script>
+</body>
+
+</html>
