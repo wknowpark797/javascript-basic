@@ -19,13 +19,13 @@ frame.addEventListener('click', () => {
 	console.log('두번째 중요한 코드');
 });
 
-// 호출 형태가 아닌 정의 형태로 두번째 인수 전달하기
+// 함수에 인수값을 전달해야 하는 형태로 이벤트 연결 시 선언적 함수로 미리 핸들러 함수 정의
 frame.addEventListener('click', handler);
 function handler() {
 	console.log('세번째 중요한 코드');
 }
 
-// 함수에 인수값을 전달해야 하는 형태로 이벤트 연결 시 선언적 함수로 미리 핸들러 함수 정의
+// 호출 형태가 아닌 정의 형태로 두번째 인수 전달하기
 frame.addEventListener('click', () => handler2('두번째 인수의 함수에 인수 전달'));
 function handler2(text) {
 	console.log(text);
