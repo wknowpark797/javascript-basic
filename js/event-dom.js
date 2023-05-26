@@ -39,3 +39,31 @@ console.log('btn other parent: ', otherParentEl);
 // .btn 요소를 기준으로 div 요소를 탐색구문으로 반환
 const mission = btn.closest('main').querySelector('div');
 console.log('mission: ', mission);
+
+/*
+
+  [ 유사배열 ]
+
+  1. HTMLCollection
+    - document.getElementById('아이디 선택자');
+    - document.getElementsByClassName('클래스 선택자');
+    - 부모요소.children
+    - forEach 반복문의 사용 불가능
+      -> 순수배열로 변환 후 활용 가능
+
+      ex) 유사배열을 강제로 순수배열로 변환하기
+      Array.from(유사배열)
+      const childEl = Array.from(ul.children);
+      childEl.forEach(data => console.log(data));
+
+    - Live DOM (동적인 돔)
+      변경점이 실시간으로 반영되어 라이브로 확인이 가능
+
+  2. NodeList
+    - document.querySelector('선택자');
+    - document.querySelectorAll('선택자');
+    - forEach 반복문의 사용 가능
+    - Static DOM (정적인 돔)
+      라이브로 확인이 불가능
+
+*/
