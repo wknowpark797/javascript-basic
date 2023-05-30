@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--
+    [ innerHTML로 동적 DOM 생성 ]
+  -->
+
+  <!-- <h1>
+    <a href="https://www.naver.com" target="_blank">NAVER</a>
+  </h1> -->
+
+  <script>
+
+    const href = 'https://www.naver.com';
+    const target = '_blank';
+    const text = 'NAVER';
+
+    const dom = `
+      <h1>
+        <a href="${href}" target="${target}">${text}</a>
+      </h1>
+    `;
+    document.body.innerHTML = dom;
+
+    /*
+      [ innerHTML ]
+      기존의 내용을 삭제하고 대입되는 문자열로 기존 DOM 구조를 덮어쓴다.
+      -> innerHTML의 한계
+    */
+    const href2 = 'https://www.nate.com';
+    const target2 = '_blank';
+    const text2 = 'NATE';
+
+    const dom2 = `
+      <h2>
+        <a href="${href2}" target="${target2}">${text2}</a>
+      </h2>
+    `;
+    document.body.innerHTML = dom2;
+
+    /*
+      [ append 메서드 ]
+      인수를 노드형태로만 전달이 가능하다.
+    */
+    document.body.append(dom2);
+
+    /*
+      기존 DOM 요소에 동적 내용을 추가할 때 최상위 앨리먼트 요소만 createElement로 생성하고 자식 요소는 innerHTML로 바인딩 처리할 수 있다.
+    */
+    const dom3 = `
+      <span>
+        <a href="${href2}" target="${target2}">${text2}</a>
+        <strong>강조 텍스트</strong>
+      </span>
+    `;
+    const h2 = document.createElement('h2');
+    h2.innerHTML = dom3;
+    document.body.append(h2);
+
+  </script>
+</body>
+
+</html>
