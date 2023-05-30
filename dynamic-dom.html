@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--
+    [ 동적 DOM 생성 ]
+    스크립트로 DOM을 동적으로 생성하기
+    추후 리액트로 편리하게 사용 (JSX)
+  -->
+
+  <!-- <h1>
+    <a href="https://www.naver.com" target="_blank">NAVER</a>
+  </h1> -->
+
+  <script>
+
+    // 앨리먼트 노드 생성
+    const h1 = document.createElement('h1');
+    const a = document.createElement('a');
+
+    // 속성 노드 생성
+    const href = document.createAttribute('href');
+    const target = document.createAttribute('target');
+
+    href.value = 'https://www.naver.com';
+    target.value = '_blank';
+
+    // 앨리먼트 노드에 속성 노드 바인딩
+    a.setAttributeNode(href);
+    a.setAttributeNode(target);
+
+    a.innerText = 'NAVER';
+
+    // 노드 붙이기
+    h1.append(a);
+    document.body.prepend(h1);
+
+  </script>
+</body>
+
+</html>
