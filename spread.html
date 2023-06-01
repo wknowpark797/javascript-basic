@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!--
+    [ 전개 연산자 (Spread Operator) ]
+    - 원본 데이터의 불변성을 지키기 위한 연산자
+    - Deep Copy를 위한 연산자
+  -->
+
+  <script>
+
+    // 기존 배열 초기화
+    const array = [1, 2, 3];
+
+    // 원본 배열값을 참조하는 값을 출력
+    console.log('참조값 출력: ', array);
+
+    // 기존 array 배열의 값을 꺼내 복사한 값을 출력
+    console.log('배열 복사값 출력: ', ...array);
+
+    /*
+      기존 배열의 값을 꺼내 복사한 값을 다시 배열에 담아 새로운 변수에 할당
+      - 기존 원본은 유지되면서 새로운 복사본 생성 (Deep Copy)
+      - 새로운 배열값을 변경해도 원본 배열은 유지 (불변성 유지)
+    */
+    const newArray = [...array];
+    newArray[0] = 0;
+    console.log('복사 배열: ', newArray);
+    console.log('원본 배열: ', array);
+
+    /*
+      [ 배열 합치기 ]
+    */
+
+    // ES5 - 배열 합치기
+    var a = [1, 2, 3];
+    var b = [3, 4, 5];
+    var ab = a.concat(b);
+    console.log('ES5 concat: ', ab);
+
+    // ES6 - 배열 합치기
+    const arr1 = [1, 2, 3];
+    const arr2 = [3, 4, 5];
+    const combinedArr = [...arr1, ...arr2];
+    console.log('ES6 spread: ', combinedArr);
+
+    /*
+      미션 1) indexOf와 filter 메서드를 활용하여 배열의 중복값 제거하기
+    */
+    const removeResult = [...new Set(combinedArr)];
+    console.log('중복값 제거: ', removeResult);
+
+    const strArr = ['red', 'red', 'blue'];
+    const removeResult2 = [...new Set(strArr)];
+    console.log('중복값 제거2: ', removeResult2);
+
+    // 꿀팁공식) 배열의 중복값 제거하기 공식
+    const removeResult3 = combinedArr.filter((el, idx) => combinedArr.indexOf(el) === idx);
+    console.log('중복값 제거 공식: ', removeResult3);
+
+    /*
+      [ 객체 합치기 ]
+      - 전개 연산자로 객체값을 할칠 때 뒤에 있는 객체값이 앞에 있는 객체값을 덮어쓰면서 합쳐진다.
+    */
+
+    // ES5 - 객체 합치기
+    const obj1 = {
+      name: 'David',
+      age: 20
+    }
+    const obj2 = {
+      name: 'Andy',
+      address: 'Seoul'
+    }
+    // assign(반환될 빈객체, 덮어쓰기 당할 객체, 덮어쓰기 할 객체)
+    const newObj = Object.assign({}, obj1, obj2);
+    console.log('ES5 assign: ', newObj);
+
+    // ES6 - 객체 합치기
+    const objA = {
+      name: 'David',
+      age: 29
+    }
+    const objB = {
+      name: 'Andy',
+      address: 'Seoul'
+    }
+    const objC = {
+      name: 'Paul',
+      address: 'Home'
+    }
+    const newObjAB = { ...objA, ...objB, ...objC };
+    console.log('ES6 spread: ', newObjAB);
+
+    /*
+      [ 전개연산자로 값 추가하기 ]
+    */
+
+    // 배열에 값 추가
+    const arr3 = [1, 2, 3];
+    const newArr3 = [0, ...arr3, 4];
+    console.log('배열에 값 추가: ', newArr3);
+
+    // 객체에 값 추가
+    const studentA = {
+      name: 'David',
+      age: 20
+    }
+    const newStudentA = { ...studentA, address: 'Seoul' };
+    console.log('객체에 값 추가: ', newStudentA);
+
+    /*
+      [ 나머지 매개변수 (Rest Parameter) ]
+      - 특정 값들을 배열로 묶어 통으로 전달할 때 사용
+    */
+    const restFunc = (txt, ...rest) => {
+      console.log(txt);
+      console.log(rest);
+    }
+    restFunc('홍길동', 'Game1', 'Game2', 'Game3');
+
+  </script>
+</body>
+
+</html>
