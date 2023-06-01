@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!--
+    [ 불변성 유지를 위한 배열 전용 내장함수 (immutable method) ]
+    - 원본의 배열값을 훼손하지 않으면서 새로운 배열을 반환
+    - map, forEach, filter 필수로 기억하기
+  -->
+
+  <script>
+
+    const names = ['짱구', '철수', '유리', '맹구', '훈이'];
+
+    /*
+      1. find
+        - 배열에서 조건에 만족하는 값이 있다면 해당 값을 반환 후 바로 종료
+    */
+
+    // 문자열.includes('찾을 문자열') - 원본 문자열에서 인수로 전달된 문자열이 있는지 확인 후 boolean 값 반환
+    const result = names.find(el => el.includes('짱'));
+    console.log('find: ', result);
+
+    /*
+      2. findIndex
+        - 찾고자 하는 배열의 순서값을 반환
+    */
+    const index = names.findIndex(el => el.includes('맹구'));
+    console.log('findIndex: ', index);
+
+    /*
+      2-1. indexOf
+        - 전체 배열에서 특정 값의 순서값을 반환
+    */
+    const index2 = names.indexOf('맹구');
+    console.log('indexOf: ', index2);
+
+    /*
+      3. filter
+        - 배열에서 찾고자 하는 모든 값을 배열로 반환
+        - 조건식에 !를 사용하면 해당 값이 아닌 나머지 값들이 배열로 반환
+        - 반복 + Deep Copy + 필터링 기능
+    */
+    const result2 = names.filter(el => !el.includes('짱'));
+    console.log('filter: ', result2);
+
+    /*
+      4. map
+        - 기존의 배열을 반복처리 하면서 새로운 배열을 Deep Copy
+    */
+    const result3 = names.map(el => el + '님');
+    console.log('map: ', result3);
+
+    /*
+      5. reduce
+        - 누적된 연산값을 반환하는 함수
+
+        배열.reduce((누적된 값, 현재값, 순서) => 연산식, 누적 초기값)
+    */
+    const origin = [1, 2, 3, 4, 5];
+    const accNum = origin.reduce((acc, cur, idx) => acc + cur, 10);
+    console.log('reduce: ', accNum);
+
+    // 예제) 누적연산 처리 함수
+    const calc = (how, ...rest) => {
+      if (how === '+') return rest.reduce((acc, cur) => acc + cur);
+      if (how === '-') return rest.reduce((acc, cur) => acc - cur);
+      if (how === '*') return rest.reduce((acc, cur) => acc * cur);
+      if (how === '/') return rest.reduce((acc, cur) => acc / cur);
+    }
+    console.log(calc('+', 122, 587, 90, 11));
+    console.log(calc('*', 77, 88));
+
+    /*
+      - 기존의 names 배열을 출력해보면 원본 배열은 그대로 유지가 되는 불변성(immutable) 상태임을 알 수 있다.
+      - 위 함수들은 모두 불변성을 유지시켜주는 배열전용 함수
+        (추후 리액트에서 원본 값과 변경되는 값을 비교하기 위한 중요 개념)
+      - 위 함수들은 배열 전용 내장 함수이므로 querySelectorAll로 반환되는 유사배열에는 사용이 불가능
+      - 유사배열에 해당 함수들을 사용하고 싶을 때 Array.from()을 사용하여 순수배열로 변환 후 사용이 가능
+    */
+
+  </script>
+
+</body>
+
+</html>
